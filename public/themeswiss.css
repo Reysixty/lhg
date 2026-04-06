@@ -1,0 +1,355 @@
+body.themeswiss {
+    --bg: #fbfbfa;
+    --surface: #ffffff;
+    --surface-soft: #f4f4f1;
+    --text: #111111;
+    --muted: #666666;
+    --border: #d8d8d2;
+    --border-strong: #bdbdb6;
+    --primary: #b3122d;
+    --primary-dark: #8f0f24;
+    --accent: #111111;
+    --lhg-blue: #05164d;
+
+    --shadow: none;
+    --radius-lg: 0px;
+    --radius-md: 0px;
+    --radius-sm: 0px;
+    --profile-radius: 0px;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+}
+
+.site-header {
+    background: rgba(251, 251, 250, 0.96);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+}
+
+.brand {
+    color: var(--muted);
+    font-weight: 800;
+    letter-spacing: -0.035em;
+}
+
+.nav a {
+    color: var(--muted);
+}
+
+.nav a:hover {
+    color: var(--text);
+}
+
+.card {
+    background: var(--surface);
+    border-color: var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+}
+
+.hero__main {
+    position: relative;
+}
+
+.hero__main::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 6px;
+    height: 100%;
+    background: var(--primary);
+}
+
+.hero__main::after {
+    left: -80px;
+    top: 0;
+    right: auto;
+    width: 260px;
+    height: 100%;
+    background: linear-gradient(
+            90deg,
+            rgba(179, 18, 45, 0.14) 0%,
+            rgba(179, 18, 45, 0.08) 30%,
+            rgba(179, 18, 45, 0.03) 55%,
+            rgba(179, 18, 45, 0) 85%
+    );
+}
+
+.site-header__left {
+    gap: 1.25rem;
+}
+
+.theme-switcher {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.theme-switcher__logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.45;
+}
+
+.theme-switcher__track {
+    background: transparent;
+    border: 1px solid rgba(17, 17, 17, 0.15);
+}
+
+.theme-switcher__thumb {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--primary);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+body.themeswiss .theme-switcher__thumb {
+    transform: translateX(0);
+    background: var(--primary);
+}
+
+body.themelhg .theme-switcher__thumb {
+    transform: translateX(20px);
+    background: var(--lhg-blue);
+}
+
+body.themelhg .theme-switcher__track {
+    border-color: rgba(5, 22, 77, 0.25);
+}
+
+body.themeswiss .theme-switcher__logo--swiss,
+body.themelhg .theme-switcher__logo--lhg {
+    opacity: 1;
+}
+
+.eyebrow {
+    color: var(--primary);
+    letter-spacing: 0.16em;
+}
+
+.chip {
+    background: transparent;
+    border-color: var(--border);
+    color: var(--muted);
+    border-radius: 999px;
+}
+
+h1 {
+    color: var(--text);
+    letter-spacing: -0.06em;
+    line-height: 0.94;
+}
+
+.hero__subtitle {
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.hero__lead {
+    color: var(--muted);
+}
+
+.btn {
+    border-radius: 999px;
+    letter-spacing: 0.01em;
+}
+
+.btn--primary {
+    background: var(--primary);
+    color: #ffffff;
+}
+
+.btn--primary:hover {
+    background: var(--primary-dark);
+}
+
+.btn--secondary {
+    background: transparent;
+    border-color: var(--text);
+    color: var(--text);
+}
+
+.btn--secondary:hover {
+    background: #f3f3f0;
+}
+
+.hero__metric {
+    background: transparent;
+    border-color: var(--border);
+    border-radius: var(--radius-md);
+}
+
+.hero__metric strong {
+    color: var(--text);
+}
+
+.hero__metric span {
+    color: var(--muted);
+}
+
+.profile-image {
+    border-radius: var(--profile-radius);
+    border-color: var(--border);
+    background: linear-gradient(180deg, #f6f6f4 0%, #ecece8 100%);
+}
+
+.profile-name {
+    color: var(--text);
+    letter-spacing: -0.025em;
+}
+
+.profile-role {
+    color: var(--muted);
+}
+
+.detail-card h3,
+.section-title,
+.timeline__role,
+.sidebar-card h3 {
+    color: var(--text);
+}
+
+.detail-label,
+.section-intro,
+.content-card p,
+.content-card ul,
+.timeline__company,
+.timeline__bullets,
+.timeline__subrole ul,
+.list-clean,
+.contact-tile__label,
+.footer {
+    color: var(--muted);
+}
+
+.detail-list {
+    display: grid;
+    gap: 0;
+    margin-top: 1rem;
+}
+
+.detail-item {
+    padding: 1.1rem 0 1.15rem;
+    border: none;
+    border-bottom: 1px solid rgba(17, 17, 17, 0.12);
+    background: transparent;
+}
+
+.detail-item:first-child {
+    padding-top: 0.2rem;
+}
+
+.detail-item:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.detail-label {
+    display: block;
+    margin-bottom: 0.55rem;
+    color: var(--muted);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-weight: 700;
+}
+
+.detail-value a {
+    color: var(--primary);
+}
+
+.detail-value a:hover {
+    text-decoration: underline;
+}
+
+.section-title {
+    letter-spacing: -0.04em;
+}
+
+.timeline__role {
+    color: var(--text);
+    letter-spacing: -0.03em;
+}
+
+.timeline__subrole {
+    border-left-color: var(--border-strong);
+}
+
+.timeline__subrole h4 {
+    color: var(--accent);
+}
+
+.timeline__date {
+    background: transparent;
+    color: var(--muted);
+    border-radius: 999px;
+}
+
+.skill-tag {
+    background: transparent;
+    color: var(--text);
+    border-radius: 999px;
+}
+
+.contact-tile {
+    background: var(--surface);
+}
+
+.contact-tile__value {
+    color: var(--text);
+}
+
+.footer {
+    border-top: 1px solid var(--border);
+}
+
+.card,
+.chip,
+.hero__metric,
+.profile-image,
+.timeline__date,
+.skill-tag,
+.footer {
+    border-width: 1px;
+    border-style: solid;
+}
+
+.hero,
+.section {
+    background: transparent;
+}
+
+/* ===== LHG Logo Wechsel (dark / light) ===== */
+
+.theme-switcher__logo--lhg .logo--dark {
+    display: block;
+}
+
+.theme-switcher__logo--lhg .logo--light {
+    display: none;
+}
+
+body.themelhg .theme-switcher__logo--lhg .logo--dark {
+    display: none;
+}
+
+body.themelhg .theme-switcher__logo--lhg .logo--light {
+    display: block;
+}
+
+body.themeswiss .theme-switcher__logo--lhg {
+    opacity: 0.5;
+}
+
+body.themelhg .theme-switcher__logo--lhg {
+    opacity: 1;
+}

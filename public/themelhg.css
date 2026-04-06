@@ -1,0 +1,133 @@
+body.themelhg {
+    --bg: #020a2a;
+    --surface: #071548;
+    --surface-soft: #0d1f66;
+
+    --text: #f4f7ff;
+    --muted: #aebbe3;
+
+    --border: rgba(255, 255, 255, 0.10);
+    --border-strong: rgba(255, 255, 255, 0.18);
+
+    --primary: #ffffff;
+    --primary-dark: #dfe7ff;
+    --accent: #f4f7ff;
+
+    --shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+    --radius-lg: 10px;
+    --radius-md: 8px;
+    --radius-sm: 6px;
+    --profile-radius: 12px;
+
+    background: var(--bg);
+    color: var(--text);
+}
+
+/* Header */
+body.themelhg .site-header {
+    background: rgba(2, 10, 42, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+}
+
+/* Cards */
+body.themelhg .card {
+    background: linear-gradient(180deg, #071548 0%, #050f38 100%);
+    border-color: var(--border);
+    box-shadow: var(--shadow);
+}
+
+/* Hero Accent */
+body.themelhg .hero__main::before {
+    background: rgba(255, 255, 255, 0.85);
+}
+
+body.themelhg .hero__main::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+
+    background: linear-gradient(
+            90deg,
+            rgba(10, 25, 80, 0.35) 0%,
+            rgba(10, 25, 80, 0.18) 35%,
+            rgba(10, 25, 80, 0.08) 60%,
+            rgba(10, 25, 80, 0.02) 80%,
+            rgba(10, 25, 80, 0) 100%
+    );
+}
+
+body.themelhg .link-linkedin {
+    color: #6ea8ff; /* dezentes, hochwertiges Blau */
+    font-weight: 500;
+    text-decoration: none;
+}
+
+body.themelhg .link-linkedin {
+    color: #e3e1de;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+body.themelhg .link-linkedin:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+/* Chips */
+body.themelhg .chip {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.10);
+}
+
+/* Metrics */
+body.themelhg .hero__metric {
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Buttons */
+body.themelhg .btn--primary {
+    background: #ffffff;
+    color: #020a2a;
+}
+
+body.themelhg .btn--primary:hover {
+    background: #e6ecff;
+}
+
+body.themelhg .btn--secondary {
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+body.themelhg .btn--secondary:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* Profile */
+body.themelhg .profile-image {
+    background: linear-gradient(180deg, #0d1f66 0%, #071548 100%);
+}
+
+/* Timeline */
+body.themelhg .timeline__date {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.10);
+}
+
+/* Skills */
+body.themelhg .skill-tag {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.10);
+}
+
+/* Switch */
+body.themelhg .theme-switcher__track {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.18);
+}
+
+body.themelhg .theme-switcher__thumb {
+    background: #ffffff;
+}
