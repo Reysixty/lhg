@@ -131,3 +131,55 @@ body.themelhg .theme-switcher__track {
 body.themelhg .theme-switcher__thumb {
     background: #ffffff;
 }
+
+body.themelhg .theme-hint {
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: none;
+}
+
+body.themelhg .theme-hint::before {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+body.themelhg .theme-hint::before {
+    background: inherit;
+}
+
+body.themelhg .footer {
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+body.themelhg .career-scroll-marker {
+    background: linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0),
+            rgba(255, 255, 255, 0.85),
+            rgba(255, 255, 255, 0)
+    );
+}
+
+body.themelhg .career-dot {
+    box-shadow: 0 0 0 7px var(--surface);
+}
+body.themelhg .donut-chart,
+body.themelhg .donut-legend {
+    --cap-service: #ffffff;
+    --cap-data: #d4af37;
+    --cap-architecture: #8c94a6;
+    --cap-solution: #5d6680;
+    --cap-alignment: #d8dbe3;
+}
+
+body.themelhg .donut-segment--process {
+    color: var(--lhg-blue);
+}
+
+body.themelhg .donut-legend span:nth-child(1) i {
+    color: var(--lhg-blue);
+}

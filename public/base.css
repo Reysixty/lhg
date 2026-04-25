@@ -102,6 +102,86 @@ img {
     display: inline-block;
 }
 
+.theme-switcher {
+    position: relative;
+}
+
+.theme-switcher__toggle {
+    position: relative;
+    z-index: 3;
+}
+
+.theme-switcher__toggle--highlight {
+    animation: togglePulse 1.6s ease-in-out 3;
+}
+
+.theme-hint {
+    position: absolute;
+
+    top: 135%;
+    left: 50%;
+    transform: translateX(-50%) translateY(6px);
+
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    white-space: nowrap;
+
+    padding: 0.4rem 0.6rem;
+    border-radius: 8px;
+
+    font-size: 0.72rem;
+    font-weight: 600;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.theme-hint::before {
+    content: "";
+    position: absolute;
+    top: -5px;                 /* leicht höher für besseren Anschluss */
+    left: 50%;
+    width: 8px;
+    height: 8px;
+    transform: translateX(-50%) rotate(45deg);
+    opacity: 0.7;
+}
+
+.theme-hint.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(2px);
+}
+
+.theme-hint__close {
+    border: none;
+    background: transparent;
+    color: inherit;
+    font-size: 0.8rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0;
+    opacity: 0.6;
+
+    margin-left: 2px;
+}
+
+.theme-hint__close:hover {
+    opacity: 1;
+}
+
+@keyframes togglePulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(179, 18, 45, 0.12);
+    }
+    50% {
+        box-shadow: 0 0 0 4px rgba(179, 18, 45, 0);
+    }
+}
+
 .theme-switcher__thumb {
     position: absolute;
     top: 2px;
@@ -547,91 +627,525 @@ h1 {
     font-size: 0.92rem;
 }
 
-@media (max-width: 1080px) {
-    .hero__grid,
-    .grid-2,
-    .contact-grid {
-        grid-template-columns: 1fr;
-    }
+/* ===============================
+   Interactive Capability Dashboard
+   =============================== */
 
-    h1 {
-        max-width: none;
+.mini-dashboard {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.dashboard-main,
+.dashboard-donut-card {
+    padding: 1.25rem;
+}
+
+.dashboard-main__top {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.4rem;
+}
+
+.dashboard-label {
+    display: block;
+    color: var(--muted);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 800;
+    margin-bottom: 0.35rem;
+}
+
+.dashboard-main__top strong {
+    font-size: 1.35rem;
+    letter-spacing: -0.03em;
+}
+
+.dashboard-status {
+    align-self: flex-start;
+    padding: 0.45rem 0.7rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--primary);
+    font-size: 0.8rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+/* Donut Chart */
+
+.donut-wrap {
+    display: flex;
+    justify-content: center;
+    padding: 1.4rem 0 0.8rem;
+}
+
+.donut-chart {
+    --cap-service: var(--primary);
+    --cap-data: #8f2332;
+    --cap-architecture: #5f5f5a;
+    --cap-solution: #b9b8b0;
+    --cap-alignment: #dedbd2;
+
+    width: 290px;
+    height: 290px;
+    border-radius: 50%;
+    position: relative;
+    background: conic-gradient(
+            var(--cap-service) 0 20%,
+            var(--cap-data) 20% 40%,
+            var(--cap-architecture) 40% 60%,
+            var(--cap-solution) 60% 80%,
+            var(--cap-alignment) 80% 100%
+    );
+    margin: 1.2rem auto 1.8rem;
+}
+
+.donut-chart::after {
+    content: "";
+    position: absolute;
+    inset: 82px;
+    border-radius: 50%;
+    background: var(--surface);
+    z-index: 2;
+}
+
+.donut-center {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    z-index: 3;
+    font-size: 1rem;
+    font-weight: 800;
+    line-height: 1.18;
+}
+
+.donut-segment {
+    position: absolute;
+    z-index: 4;
+    border: none;
+    background: transparent;
+    color: #fff;
+    padding: 0;
+    font: inherit;
+    font-size: 1.7rem;
+    font-weight: 900;
+    line-height: 1;
+    cursor: pointer;
+    box-shadow: none;
+}
+
+.donut-segment--process {
+    top: 48px;
+    right: 78px;
+}
+
+.donut-segment--data {
+    right: 40px;
+    bottom: 104px;
+}
+
+.donut-segment--tech {
+    left: 50%;
+    bottom: 32px;
+    transform: translateX(-50%);
+}
+
+.donut-segment--product {
+    left: 40px;
+    bottom: 104px;
+}
+
+.donut-segment--alignment {
+    top: 48px;
+    left: 76px;
+}
+
+.donut-legend {
+    display: grid;
+    gap: 0.75rem;
+    margin-top: 1.2rem;
+    font-size: 0.92rem;
+    color: var(--muted);
+}
+
+.donut-legend span {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+.donut-legend i {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: inline-grid;
+    place-items: center;
+    flex: 0 0 auto;
+    color: #fff;
+    font-style: normal;
+    font-size: 0.82rem;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.donut-legend {
+    --cap-service: var(--primary);
+    --cap-data: #8f2332;
+    --cap-architecture: #5f5f5a;
+    --cap-solution: #b9b8b0;
+    --cap-alignment: #dedbd2;
+}
+
+.donut-legend span:nth-child(1) i {
+    background: var(--cap-service);
+}
+
+.donut-legend span:nth-child(2) i {
+    background: var(--cap-data);
+}
+
+.donut-legend span:nth-child(3) i {
+    background: var(--cap-architecture);
+}
+
+.donut-legend span:nth-child(4) i {
+    background: var(--cap-solution);
+}
+
+.donut-legend span:nth-child(5) i {
+    background: var(--cap-alignment);
+}
+
+/* Accordion Bar Chart */
+
+.dashboard-accordion {
+    display: grid;
+    gap: 0.9rem;
+}
+
+.dashboard-bar-item {
+    border: 1px solid var(--border);
+    padding: 0.9rem;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.dashboard-bar-item:hover {
+    transform: translateY(-2px);
+    border-color: var(--border-strong);
+}
+
+.dashboard-bar-item summary {
+    list-style: none;
+    cursor: pointer;
+}
+
+.dashboard-bar-item summary::-webkit-details-marker {
+    display: none;
+}
+
+.dashboard-bar-item[open] {
+    border-color: var(--border-strong);
+}
+
+.dashboard-bar__head {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.4rem;
+    font-size: 0.9rem;
+}
+
+.dashboard-bar__head strong {
+    color: var(--primary);
+}
+
+.dashboard-bar__track {
+    height: 8px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+}
+
+.dashboard-bar__track span {
+    display: block;
+    height: 100%;
+    background: var(--primary);
+}
+
+.dashboard-bar__detail {
+    margin-top: 0.9rem;
+    padding-top: 0.9rem;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.92rem;
+}
+
+.dashboard-bar__detail p {
+    margin: 0 0 0.75rem;
+}
+
+.dashboard-bar__detail ul {
+    margin: 0;
+    padding-left: 1.1rem;
+}
+
+.dashboard-bar__detail li + li {
+    margin-top: 0.35rem;
+}
+
+/* Responsive */
+
+@media (max-width: 1080px) {
+    .mini-dashboard {
+        grid-template-columns: 1fr;
     }
 }
 
 @media (max-width: 760px) {
-    .nav {
-        display: none;
+    .dashboard-main__top {
+        flex-direction: column;
     }
 
-    .hero {
-        padding-top: 3.5rem;
+    .donut-chart {
+        width: 210px;
+        height: 210px;
     }
 
-    .hero__main,
-    .content-card,
-    .timeline__item,
-    .sidebar-card,
-    .detail-card,
-    .profile-card,
-    .contact-tile {
+    .donut-chart::after {
+        inset: 54px;
+    }
+
+    .donut-segment {
+        position: static;
+        display: block;
+        width: 100%;
+        margin-top: 0.45rem;
+        text-align: left;
+    }
+
+    .donut-chart {
+        margin-bottom: 1rem;
+    }
+}
+
+/* ===============================
+   Career Timeline – Premium Update
+   =============================== */
+
+.career-timeline {
+    --timeline-x: 7.6rem;
+    --dot-size: 14px;
+
+    position: relative;
+    display: grid;
+    gap: 1rem;
+}
+
+/* Grundlinie */
+.career-timeline::before {
+    content: "";
+    position: absolute;
+    left: var(--timeline-x);
+    top: 1.4rem;
+    bottom: 1.4rem;
+    width: 1px;
+    background: var(--border-strong);
+    opacity: 0.75;
+}
+
+/* Scroll-Akzent auf der Timeline */
+.career-scroll-marker {
+    position: sticky;
+    top: 42vh;
+    left: var(--timeline-x);
+
+    width: 1px;
+    height: 115px;
+
+    margin-left: var(--timeline-x);
+    margin-bottom: -115px;
+
+    background: linear-gradient(
+            180deg,
+            rgba(179, 18, 45, 0),
+            var(--primary),
+            rgba(179, 18, 45, 0)
+    );
+
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Item */
+.career-item {
+    position: relative;
+    padding: 0;
+    overflow: visible;
+}
+
+/* Header */
+.career-item summary {
+    display: grid;
+    grid-template-columns: 6.5rem 2.2rem 1fr;
+    gap: 0.9rem;
+    align-items: start;
+    cursor: pointer;
+}
+
+.career-item summary::-webkit-details-marker {
+    display: none;
+}
+
+/* Jahreszahlen sauber rechts an der Linie ausrichten */
+.career-year {
+    padding-top: 1.35rem;
+    text-align: right;
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: var(--muted);
+    line-height: 1.25;
+    white-space: nowrap;
+}
+
+/* Punkt exakt auf der vertikalen Linie */
+.career-dot {
+    position: relative;
+    width: var(--dot-size);
+    height: var(--dot-size);
+    margin-top: 1.45rem;
+    left: 0.2rem;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background: var(--primary);
+    z-index: 3;
+    box-shadow: 0 0 0 7px var(--surface);
+}
+
+/* Card */
+.career-card-content {
+    padding: 1.35rem;
+}
+
+.career-card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.career-card-head h3 {
+    margin: 0 0 0.25rem;
+    font-size: 1.08rem;
+    letter-spacing: -0.02em;
+}
+
+.career-card-head p {
+    margin: 0;
+    color: var(--muted);
+    font-weight: 600;
+}
+
+.career-preview {
+    margin-top: 0.8rem;
+    color: var(--muted);
+    max-width: 42rem;
+}
+
+/* Pfeil */
+.career-arrow {
+    width: 10px;
+    height: 10px;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(45deg);
+    margin-top: 0.25rem;
+    transition: transform 0.2s ease;
+    flex: 0 0 auto;
+}
+
+.career-item[open] .career-arrow {
+    transform: rotate(225deg);
+}
+
+/* Detailbereich */
+.career-detail {
+    padding: 0 1.35rem 1.35rem calc(6.5rem + 2.2rem + 1.8rem);
+    color: var(--muted);
+}
+
+.career-detail ul {
+    margin: 0.9rem 0 0;
+    padding-left: 1.1rem;
+}
+
+.career-detail li + li {
+    margin-top: 0.5rem;
+}
+
+/* Rahmen oberhalb von "Zusätzliche Erfahrung" entfernen */
+.timeline__subrole {
+    margin-top: 1.4rem;
+    padding-top: 0;
+    padding-left: 1.1rem;
+    border-top: none;
+    border-left: 1px solid var(--border-strong);
+}
+
+.timeline__subrole h4 {
+    margin: 0 0 0.6rem;
+}
+
+.timeline__subrole ul {
+    margin: 0;
+    padding-left: 1.1rem;
+}
+
+/* Mobile */
+@media (max-width: 760px) {
+    .career-timeline {
+        --timeline-x: 1.7rem;
+    }
+
+    .career-timeline::before {
+        left: var(--timeline-x);
+    }
+
+    .career-scroll-marker {
+        margin-left: var(--timeline-x);
+    }
+
+    .career-item summary {
+        grid-template-columns: 2.2rem 1fr;
+        gap: 0.8rem;
+    }
+
+    .career-year {
+        grid-column: 2;
+        grid-row: 1;
+        padding-top: 0.4rem;
+        text-align: left;
+        font-size: 0.8rem;
+    }
+
+    .career-dot {
+        grid-column: 1;
+        grid-row: 1 / span 2;
+        margin-top: 1.45rem;
+    }
+
+    .career-card-content {
+        grid-column: 2;
         padding: 1.15rem;
     }
 
-    .hero__highlight {
-        grid-template-columns: 1fr;
-    }
-
-    .hero__actions {
-        flex-direction: column;
-    }
-
-    .btn {
-        width: 100%;
-    }
-
-    .section__header {
-        align-items: start;
-        flex-direction: column;
+    .career-detail {
+        padding: 0 1.15rem 1.15rem 3.1rem;
     }
 }
 
-@media (max-width: 760px) {
-    .site-header__left {
-        gap: 0.75rem;
-    }
-
-    .theme-switcher {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-    }
-
-    .theme-switcher__track {
-        position: relative;
-        width: 40px;
-        height: 20px;
-        border-radius: 999px;
-    }
-
-    .theme-switcher__thumb {
-        position: absolute;
-        top: 50%;
-        left: 2px;
-        width: 16px;
-        height: 16px;
-        border-radius: 50%;
-        transform: translateY(-50%);
-        transition: transform 0.2s ease, background-color 0.2s ease;
-    }
-
-    body.themeswiss .theme-switcher__thumb {
-        transform: translateY(-50%) translateX(0);
-        background: var(--primary);
-    }
-
-    body.themelhg .theme-switcher__thumb {
-        transform: translateY(-50%) translateX(20px);
-        background: var(--lhg-blue);
-    }
-}

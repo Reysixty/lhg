@@ -112,6 +112,22 @@ body {
     transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
+body.themeswiss .theme-hint {
+    background: rgba(179, 18, 45, 0.08);
+    color: var(--primary);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(179, 18, 45, 0.15);
+    box-shadow: none;
+}
+
+body.themeswiss .theme-hint {
+    background: rgba(179, 18, 45, 0.08);
+}
+
+body.themeswiss .theme-hint::before {
+    background: inherit;
+}
+
 body.themeswiss .theme-switcher__thumb {
     transform: translateX(0);
     background: var(--primary);
@@ -317,8 +333,7 @@ h1 {
 .hero__metric,
 .profile-image,
 .timeline__date,
-.skill-tag,
-.footer {
+.skill-tag {
     border-width: 1px;
     border-style: solid;
 }
