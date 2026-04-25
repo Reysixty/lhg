@@ -57,6 +57,7 @@ img {
     display: inline-flex;
     align-items: center;
     gap: 0.65rem;
+    position: relative;
 }
 
 .theme-switcher__logo {
@@ -92,6 +93,8 @@ img {
     cursor: pointer;
     display: inline-flex;
     align-items: center;
+    position: relative;
+    z-index: 3;
 }
 
 .theme-switcher__track {
@@ -102,47 +105,32 @@ img {
     display: inline-block;
 }
 
-.theme-switcher {
-    position: relative;
-}
-
-.theme-switcher__toggle {
-    position: relative;
-    z-index: 3;
-}
-
 .theme-switcher__toggle--highlight {
     animation: togglePulse 1.6s ease-in-out 3;
 }
 
 .theme-hint {
     position: absolute;
-
     top: 135%;
     left: 50%;
     transform: translateX(-50%) translateY(6px);
-
     display: flex;
     align-items: center;
     gap: 0.4rem;
     white-space: nowrap;
-
     padding: 0.4rem 0.6rem;
     border-radius: 8px;
-
     font-size: 0.72rem;
     font-weight: 600;
-
     opacity: 0;
     pointer-events: none;
-
     transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
 .theme-hint::before {
     content: "";
     position: absolute;
-    top: -5px;                 /* leicht höher für besseren Anschluss */
+    top: -5px;
     left: 50%;
     width: 8px;
     height: 8px;
@@ -165,7 +153,6 @@ img {
     cursor: pointer;
     padding: 0;
     opacity: 0.6;
-
     margin-left: 2px;
 }
 
@@ -522,20 +509,22 @@ h1 {
 }
 
 .timeline__subrole {
-    margin-top: 1.25rem;
+    margin-top: 1.4rem;
+    padding-top: 0;
     padding-left: 1.1rem;
-    border-left: 1px solid;
+    border-top: none;
+    border-left: 1px solid var(--border-strong);
 }
 
 .timeline__subrole h4 {
-    margin: 0 0 0.4rem;
+    margin: 0 0 0.6rem;
     font-size: 1rem;
     font-weight: 700;
 }
 
 .timeline__subrole ul {
     margin: 0;
-    padding-left: 1rem;
+    padding-left: 1.1rem;
 }
 
 .timeline__subrole li + li {
@@ -773,6 +762,12 @@ h1 {
     margin-top: 1.2rem;
     font-size: 0.92rem;
     color: var(--muted);
+
+    --cap-service: var(--primary);
+    --cap-data: #8f2332;
+    --cap-architecture: #5f5f5a;
+    --cap-solution: #b9b8b0;
+    --cap-alignment: #dedbd2;
 }
 
 .donut-legend span {
@@ -793,14 +788,6 @@ h1 {
     font-size: 0.82rem;
     font-weight: 900;
     line-height: 1;
-}
-
-.donut-legend {
-    --cap-service: var(--primary);
-    --cap-data: #8f2332;
-    --cap-architecture: #5f5f5a;
-    --cap-solution: #b9b8b0;
-    --cap-alignment: #dedbd2;
 }
 
 .donut-legend span:nth-child(1) i {
@@ -899,41 +886,6 @@ h1 {
     margin-top: 0.35rem;
 }
 
-/* Responsive */
-
-@media (max-width: 1080px) {
-    .mini-dashboard {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 760px) {
-    .dashboard-main__top {
-        flex-direction: column;
-    }
-
-    .donut-chart {
-        width: 210px;
-        height: 210px;
-    }
-
-    .donut-chart::after {
-        inset: 54px;
-    }
-
-    .donut-segment {
-        position: static;
-        display: block;
-        width: 100%;
-        margin-top: 0.45rem;
-        text-align: left;
-    }
-
-    .donut-chart {
-        margin-bottom: 1rem;
-    }
-}
-
 /* ===============================
    Career Timeline – Premium Update
    =============================== */
@@ -947,7 +899,6 @@ h1 {
     gap: 1rem;
 }
 
-/* Grundlinie */
 .career-timeline::before {
     content: "";
     position: absolute;
@@ -959,37 +910,30 @@ h1 {
     opacity: 0.75;
 }
 
-/* Scroll-Akzent auf der Timeline */
 .career-scroll-marker {
     position: sticky;
     top: 42vh;
     left: var(--timeline-x);
-
     width: 1px;
     height: 115px;
-
     margin-left: var(--timeline-x);
     margin-bottom: -115px;
-
     background: linear-gradient(
             180deg,
             rgba(179, 18, 45, 0),
             var(--primary),
             rgba(179, 18, 45, 0)
     );
-
     z-index: 1;
     pointer-events: none;
 }
 
-/* Item */
 .career-item {
     position: relative;
     padding: 0;
     overflow: visible;
 }
 
-/* Header */
 .career-item summary {
     display: grid;
     grid-template-columns: 6.5rem 2.2rem 1fr;
@@ -1002,7 +946,6 @@ h1 {
     display: none;
 }
 
-/* Jahreszahlen sauber rechts an der Linie ausrichten */
 .career-year {
     padding-top: 1.35rem;
     text-align: right;
@@ -1013,7 +956,6 @@ h1 {
     white-space: nowrap;
 }
 
-/* Punkt exakt auf der vertikalen Linie */
 .career-dot {
     position: relative;
     width: var(--dot-size);
@@ -1027,7 +969,6 @@ h1 {
     box-shadow: 0 0 0 7px var(--surface);
 }
 
-/* Card */
 .career-card-content {
     padding: 1.35rem;
 }
@@ -1057,7 +998,6 @@ h1 {
     max-width: 42rem;
 }
 
-/* Pfeil */
 .career-arrow {
     width: 10px;
     height: 10px;
@@ -1073,7 +1013,6 @@ h1 {
     transform: rotate(225deg);
 }
 
-/* Detailbereich */
 .career-detail {
     padding: 0 1.35rem 1.35rem calc(6.5rem + 2.2rem + 1.8rem);
     color: var(--muted);
@@ -1088,64 +1027,266 @@ h1 {
     margin-top: 0.5rem;
 }
 
-/* Rahmen oberhalb von "Zusätzliche Erfahrung" entfernen */
-.timeline__subrole {
-    margin-top: 1.4rem;
-    padding-top: 0;
-    padding-left: 1.1rem;
-    border-top: none;
-    border-left: 1px solid var(--border-strong);
+/* ===============================
+   Responsive Optimierung
+   =============================== */
+
+@media (max-width: 1080px) {
+    .hero__grid,
+    .grid-2,
+    .mini-dashboard {
+        grid-template-columns: 1fr;
+    }
+
+    .hero__main {
+        min-height: auto;
+    }
 }
 
-.timeline__subrole h4 {
-    margin: 0 0 0.6rem;
-}
-
-.timeline__subrole ul {
-    margin: 0;
-    padding-left: 1.1rem;
-}
-
-/* Mobile */
 @media (max-width: 760px) {
+    .container {
+        width: min(calc(100% - 1.25rem), var(--container));
+    }
+
+    .site-header__inner {
+        min-height: auto;
+        padding: 0.85rem 0;
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .site-header__left {
+        width: 100%;
+        justify-content: space-between;
+        gap: 0.8rem;
+    }
+
+    .brand {
+        font-size: 1rem;
+    }
+
+    .theme-switcher {
+        gap: 0.35rem;
+    }
+
+    .theme-switcher__logo--swiss img {
+        height: 18px;
+    }
+
+    .theme-switcher__logo--lhg img {
+        height: 9px;
+    }
+
+    .nav {
+        width: 100%;
+        gap: 0.85rem;
+        overflow-x: auto;
+        padding-bottom: 0.15rem;
+        flex-wrap: nowrap;
+    }
+
+    .nav a {
+        font-size: 0.86rem;
+        white-space: nowrap;
+    }
+
+    .theme-hint {
+        left: auto;
+        right: 0;
+        transform: translateY(6px);
+    }
+
+    .theme-hint.is-visible {
+        transform: translateY(2px);
+    }
+
+    .theme-hint::before {
+        left: auto;
+        right: 18px;
+        transform: rotate(45deg);
+    }
+
+    .hero {
+        padding: 2rem 0 1.5rem;
+    }
+
+    h1 {
+        font-size: clamp(2.35rem, 14vw, 3.5rem);
+        max-width: 100%;
+    }
+
+    .hero__subtitle {
+        font-size: 1.05rem;
+    }
+
+    .hero__highlight {
+        grid-template-columns: 1fr;
+    }
+
+    .hero__actions {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .profile-image {
+        aspect-ratio: 4 / 4.4;
+    }
+
+    .section {
+        padding: 1.25rem 0 3rem;
+    }
+
+    .section__header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Dashboard Mobile */
+
+    .dashboard-main,
+    .dashboard-donut-card {
+        padding: 1rem;
+    }
+
+    .dashboard-main__top {
+        flex-direction: column;
+        margin-bottom: 1rem;
+    }
+
+    .dashboard-status {
+        width: fit-content;
+    }
+
+    .donut-wrap {
+        padding: 1rem 0 0.6rem;
+    }
+
+    .donut-chart {
+        width: 220px;
+        height: 220px;
+        margin: 1rem auto 1.4rem;
+    }
+
+    .donut-chart::after {
+        inset: 58px;
+    }
+
+    .donut-center {
+        font-size: 0.9rem;
+    }
+
+    .donut-segment {
+        position: absolute;
+        font-size: 1.25rem;
+    }
+
+    .donut-segment--process {
+        top: 36px;
+        right: 58px;
+    }
+
+    .donut-segment--data {
+        right: 28px;
+        bottom: 80px;
+    }
+
+    .donut-segment--tech {
+        left: 50%;
+        bottom: 25px;
+        transform: translateX(-50%);
+    }
+
+    .donut-segment--product {
+        left: 30px;
+        bottom: 80px;
+    }
+
+    .donut-segment--alignment {
+        top: 36px;
+        left: 58px;
+    }
+
+    .donut-legend {
+        font-size: 0.88rem;
+    }
+
+    .dashboard-bar__head {
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    /* Career Timeline Mobile */
+
     .career-timeline {
-        --timeline-x: 1.7rem;
+        --timeline-x: 1.25rem;
+        gap: 0.9rem;
     }
 
     .career-timeline::before {
         left: var(--timeline-x);
+        top: 1rem;
+        bottom: 1rem;
     }
 
     .career-scroll-marker {
-        margin-left: var(--timeline-x);
+        display: none;
     }
 
     .career-item summary {
-        grid-template-columns: 2.2rem 1fr;
-        gap: 0.8rem;
+        grid-template-columns: 2.5rem 1fr;
+        gap: 0.65rem;
+        align-items: start;
     }
 
     .career-year {
         grid-column: 2;
         grid-row: 1;
-        padding-top: 0.4rem;
+        padding-top: 0;
+        margin-bottom: 0.45rem;
         text-align: left;
-        font-size: 0.8rem;
+        font-size: 0.78rem;
+        white-space: normal;
     }
 
     .career-dot {
         grid-column: 1;
         grid-row: 1 / span 2;
         margin-top: 1.45rem;
+        left: var(--timeline-x);
+        transform: translateX(-50%);
     }
 
     .career-card-content {
         grid-column: 2;
-        padding: 1.15rem;
+        grid-row: 2;
+        padding: 1rem;
+    }
+
+    .career-card-head {
+        gap: 0.75rem;
+    }
+
+    .career-card-head h3 {
+        font-size: 1rem;
     }
 
     .career-detail {
-        padding: 0 1.15rem 1.15rem 3.1rem;
+        padding: 0 1rem 1.15rem 3.15rem;
+    }
+
+    .career-detail ul {
+        padding-left: 1rem;
+    }
+
+    .timeline__subrole {
+        margin-top: 1.2rem;
+        padding-left: 0.9rem;
     }
 }
-
